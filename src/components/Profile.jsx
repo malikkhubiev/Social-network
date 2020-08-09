@@ -1,7 +1,8 @@
 import React from 'react';
+import p from './Profile.module.css';
 const Profile = () => {
     return (
-        <div className="main-content"></div>
+        <div className={p.main-content}></div>
     )
 }
 export default Profile;

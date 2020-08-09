@@ -1,13 +1,14 @@
 import React from 'react';
+import n from './NavBar.module.css';
 const NavBar = () => {
     return (
-        <nav className='nav'>
-            <ul className='list'>
-                <li className='list-li'>Profile</li>
-                <li className='list-li'>Messages</li>
-                <li className='list-li'>News</li>
-                <li className='list-li'>Music</li>
-                <li className='list-li'>Settings</li>
+        <nav className={n.nav}>
+            <ul className={n.list}>
+                <li className={n.list-li}>Profile</li>
+                <li className={n.list-li}>Messages</li>
+                <li className={n.list-li}>News</li>
+                <li className={n.list-li}>Music</li>
+                <li className={n.list-li}>Settings</li>
             </ul>
         </nav>
     )
