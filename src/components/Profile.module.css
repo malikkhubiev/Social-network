@@ -1,13 +1,13 @@
-.main-content{
+.mainContent{
   margin-left: 50px;
   height: 300px;
   width: 75%;
   display: flex;
   background-color: lightskyblue;
 }
-.main-content-img{
+.mainContent-img{
   width: 100%;
 }
-.main-content p{
+.mainContent p{
   font-size: 20px;
 }

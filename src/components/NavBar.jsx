@@ -4,11 +4,11 @@ const NavBar = () => {
     return (
         <nav className={n.nav}>
             <ul className={n.list}>
-                <li className={n.list-li}>Profile</li>
-                <li className={n.list-li}>Messages</li>
-                <li className={n.list-li}>News</li>
-                <li className={n.list-li}>Music</li>
-                <li className={n.list-li}>Settings</li>
+                <li>Profile</li>
+                <li>Messages</li>
+                <li>News</li>
+                <li>Music</li>
+                <li>Settings</li>
             </ul>
         </nav>
     )

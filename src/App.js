@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import Profile from './components/Profile';
 const App = () => {
   return (
-    <div className="app-wrapper">
+    <div className="appWrapper">
       <Header/>
       <div className="double">
         <NavBar/>
