@@ -9,7 +9,6 @@ const App = () => {
       <Header/>
       <div className="double">
         <NavBar/>
-        <Profile/>
       </div>
     </div>
   );
