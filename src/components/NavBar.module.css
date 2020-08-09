@@ -1,27 +1,27 @@
 .nav{
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    height: 300px;
-    align-items: center;
-    background-color: lightsalmon;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  align-items: center;
+  background-color: lightsalmon;
 }
 .list{
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 .list li{
-    text-align: center;
-    margin: 10px auto;
-    display: block;
-    font-size: 20px;
-    color: white;
-    list-style-type: none;
-    cursor: pointer;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #fff0;
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+  font-size: 20px;
+  color: white;
+  list-style-type: none;
+  cursor: pointer;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #fff0;
 }
 .list li:hover{
-    border-bottom: 2px solid white;
+  border-bottom: 2px solid white;
 }
