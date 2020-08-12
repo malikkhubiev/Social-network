@@ -1,5 +1,6 @@
 import React from 'react';
 import p from './Profile.module.css';
+import MyPosts from './MyPosts/MyPosts';
 const Profile = () => {
     return (
         <div className={p.mainContent}>
@@ -16,23 +17,7 @@ const Profile = () => {
                         <p className={p.desc}>Education: RSEU Rinh</p>
                     </div>
                 </div>
-                <div className={p.postsArea}>
-                    <div className={p.postsMenu}>
-                        <p className={p.postsMenuHeader}>My posts</p>
-                        <input placeholder='your news...' type="text" />
-                        <button className={p.postsMenuSend}>Send</button>
-                    </div>
-                    <div className={p.posts}>
-                        <div className={p.postsPost}>
-                            <div className={p.postsPostImg}></div>   
-                            <p className={p.postsPostTxt}>Hey all, What's app?</p>   
-                        </div>
-                        <div className={p.postsPost}>
-                            <div className={p.postsPostImg}></div>   
-                            <p className={p.postsPostTxt}>React is the best!!!</p>   
-                        </div>
-                    </div>
-                </div>
+                <MyPosts/>
             </div>
         </div>
     )
