@@ -10,11 +10,11 @@ const MyPosts = () => {
                 <button className={p.postsMenuSend}>Send</button>
             </div>
             <div className={p.posts}>
-                <Post message="Hey all, what's app?"/>
-                <Post message="Hey, i'm fine, how are you?"/>
-                <Post message="I'm fine too, nice to meet you"/>
-                <Post message=";)"/>
-                <Post message="React is so much interesting!"/>
+                <Post likes="5" message="Hey all, what's app?"/>
+                <Post likes="7" message="Hey, i'm fine, how are you?"/>
+                <Post likes="2" message="I'm fine too, nice to meet you"/>
+                <Post likes="500" message=";)"/>
+                <Post likes="52" message="React is so much interesting!"/>
             </div>
         </div>
     )

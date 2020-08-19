@@ -6,7 +6,7 @@
 }
 .double{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   margin-top: 50px;

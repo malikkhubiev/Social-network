@@ -3,15 +3,22 @@ import './App.css';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
+import Dialogs from './components/Dialogs/Dialogs';
+import {BrowserRouter, Route } from 'react-router-dom';
 const App = () => {
   return (
-    <div className="appWrapper">
-      <Header/>
-      <div className="double">
-        <NavBar/>
-        <Profile/>
+    <BrowserRouter>
+      <div className="appWrapper">
+        <Header />
+        <div className="double">
+          <NavBar />
+          <Route path='/dialogs' component={Dialogs} />
+          <Route path='/profile' component={Profile} />
+          {/* <Dialogs /> */}
+          {/* <Profile/> */}
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 export default App;

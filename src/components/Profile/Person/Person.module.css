@@ -1,0 +1,30 @@
+.person{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.personTopimg{
+  width: 100%;
+  height: 100px;
+}
+.personData{
+  margin-top: 50px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.personDataAva{
+  margin-right: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.personDataDescName{
+  font-size: 30px;
+}
+.personDataDescDesc{
+  font-size: 25px;
+}

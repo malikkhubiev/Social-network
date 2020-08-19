@@ -1,0 +1,39 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+a:focus{
+    color: black;
+}
+.Dialogs{
+    height: 1000px;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+}
+.Dialogs div{
+    font-size: 25px;
+}
+.DialogsItems{
+    margin-left: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.dialog{
+    margin: 10px 0;
+}
+.DialogMessages{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.message{
+    margin: 10px 0;
+}
