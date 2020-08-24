@@ -1,7 +1,11 @@
 import React from 'react';
 import p from './MyPosts.module.css';
 import Post from './Post/Post';
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+    let posts = props.posts;
+    let postsElements = posts.map(p => <Post likes={p.likes} message={p.message}/>);
+    
     return (
         <div className={p.postsArea}>
             <div className={p.postsMenu}>
@@ -10,11 +14,7 @@ const MyPosts = () => {
                 <button className={p.postsMenuSend}>Send</button>
             </div>
             <div className={p.posts}>
-                <Post likes="5" message="Hey all, what's app?"/>
-                <Post likes="7" message="Hey, i'm fine, how are you?"/>
-                <Post likes="2" message="I'm fine too, nice to meet you"/>
-                <Post likes="500" message=";)"/>
-                <Post likes="52" message="React is so much interesting!"/>
+                {postsElements}
             </div>
         </div>
     )

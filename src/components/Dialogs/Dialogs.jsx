@@ -1,36 +1,22 @@
 import React from 'react';
 import d from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import DialogItem from './DialogItem/DialogItem';
+import DialogMessage from './DialogMessage/DialogMessage';
 
-const DialogItem = (props) => {
-    let path = `/dialogs/${props.path}`;
-    return (
-        <div className={d.dialog}><NavLink to={path}>{props.name}</NavLink></div>
-    )
-}
+const Dialogs = (props) => {
+    let dialogs = props.dialogs;
+    let messages = props.messages;
 
-const DialogMessage = (props) => {
-    return (
-        <div className={d.message}>{props.message}</div>
-    )
-}
-
-const Dialogs = () => {
+    let dialogsElements = dialogs.map( d => <DialogItem path={d.id} name={d.name} /> );
+    let messagesElements = messages.map(m => <DialogMessage message={m.message} />);
+    
     return (
         <div className={d.Dialogs}>
             <div className={d.DialogsItems}>
-                <DialogItem path='1' name='Artem' />
-                <DialogItem path='2' name='Zabit' />
-                <DialogItem path='3' name='Messi' />
-                <DialogItem path='4' name='Siera' />
-                <DialogItem path='5' name='Zhois' />
+                {dialogsElements}
             </div>
             <div className={d.DialogMessages}>
-                <DialogMessage message='Hi!' />
-                <DialogMessage message='Good architecture :)' />
-                <DialogMessage message='Have a good day)' />
-                <DialogMessage message='#WhatMeansHashTag?' />
-                <DialogMessage message='New Website!!!' />
+                {messagesElements}
             </div>
         </div>
     );

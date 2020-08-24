@@ -2,11 +2,12 @@ import React from 'react';
 import p from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import Person from './Person/Person';
-const Profile = () => {
+const Profile = (props) => {
+    let posts = props.posts;
     return (
         <div className={p.mainContent}>
             <Person/>
-            <MyPosts/>
+            <MyPosts posts={posts} />
         </div>
     )
 }
