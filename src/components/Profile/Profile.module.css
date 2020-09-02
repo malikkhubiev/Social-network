@@ -17,8 +17,7 @@ button:focus{
   outline: none;
 }
 .mainContent{
-  height: 1000px;
-  width: 75%;
+  width: 70%;
   display: flex;
   justify-content: flex-start;
   align-items: center;

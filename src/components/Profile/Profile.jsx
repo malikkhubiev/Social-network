@@ -4,10 +4,11 @@ import MyPosts from './MyPosts/MyPosts';
 import Person from './Person/Person';
 const Profile = (props) => {
     let posts = props.posts;
+    let addPost = props.addPost;
     return (
         <div className={p.mainContent}>
             <Person/>
-            <MyPosts posts={posts} />
+            <MyPosts addPost={addPost} posts={posts} />
         </div>
     )
 }
