@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 85px;
+  margin: 10px;
   flex-direction: column;
 }
 .friendsItemImg{

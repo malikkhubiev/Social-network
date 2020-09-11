@@ -6,11 +6,12 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route } from 'react-router-dom';
 const App = (props) => {
-  let friends = props.appState.navbarPage.friends;
-  let posts = props.appState.profilePage.posts;
-  let dialogs = props.appState.dialogsPage.dialogs;
-  let messages = props.appState.dialogsPage.messages;
-  let addPost = props.addPost;
+  let friends = props.state.navbarPage.friends;
+  let posts = props.state.profilePage.posts;
+  let newPostText = props.state.profilePage.newPostText;
+  let dialogs = props.state.dialogsPage.dialogs;
+  let messages = props.state.dialogsPage.messages;
+  let dispatch = props.dispatch;
   return (
     <BrowserRouter>
       <div className="appWrapper">
@@ -18,7 +19,7 @@ const App = (props) => {
         <div className="double">
           <NavBar friends={friends}/>
           <Route path='/dialogs' render={() => <Dialogs dialogs={dialogs} messages={messages} />} />
-          <Route path='/profile' render={() => <Profile addPost = {addPost} posts={posts} />} />
+          <Route path='/profile' render={() => <Profile newPostText = {newPostText} dispatch={dispatch} posts={posts} />} />
         </div>
       </div>
     </BrowserRouter>
