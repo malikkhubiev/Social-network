@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
 let store = {
     _state: {
         navbarPage: {
@@ -31,31 +35,26 @@ let store = {
                 { id: 3, message: 'Have a good day)' },
                 { id: 4, message: '#WhatMeansHashTag?' },
                 { id: 5, message: 'New Website!!!' },
-            ]
-        }
+            ],
+            newMessageText: '',
+        },
+        sidebarPage: {}
     },
     get state() {
         return this._state;
     },
+    _callSubscriber: 0,
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let inputText = this._state.profilePage.newPostText;
-            if (inputText) {
-                let newPost = { id: this._state.profilePage.posts.push.length + 1, message: inputText, likes: 1000 };
-                this._state.profilePage.posts.push(newPost);
-                this.rerenderEntireTree(this._state);
-            }
-            this.updateNewPostText('');
-        }else if(action.type === 'UPDATE-NEW-POST-TEXT'){
-            this._state.profilePage.newPostText = action.newText;
-            this.rerenderEntireTree(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
+        this._callSubscriber(this._state);
     },
 
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     },
-    rerenderEntireTree: 0,
 }
+
 export default store;

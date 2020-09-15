@@ -9,6 +9,7 @@ const App = (props) => {
   let friends = props.state.navbarPage.friends;
   let posts = props.state.profilePage.posts;
   let newPostText = props.state.profilePage.newPostText;
+  let newMessageText = props.state.dialogsPage.newMessageText;
   let dialogs = props.state.dialogsPage.dialogs;
   let messages = props.state.dialogsPage.messages;
   let dispatch = props.dispatch;
@@ -18,7 +19,7 @@ const App = (props) => {
         <Header />
         <div className="double">
           <NavBar friends={friends}/>
-          <Route path='/dialogs' render={() => <Dialogs dialogs={dialogs} messages={messages} />} />
+          <Route path='/dialogs' render={() => <Dialogs newMessageText = {newMessageText} dialogs={dialogs} dispatch={dispatch} messages={messages} />} />
           <Route path='/profile' render={() => <Profile newPostText = {newPostText} dispatch={dispatch} posts={posts} />} />
         </div>
       </div>

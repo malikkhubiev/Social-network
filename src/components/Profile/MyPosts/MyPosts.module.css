@@ -24,7 +24,8 @@
   border: 1px solid black;
   background-color: #fff0;
   width: 100%;
-  padding: 10px 20px;
+  height: 50px;
+  padding: 0 20px;
   font-size: 20px;
 }
 .postsMenuSend{
