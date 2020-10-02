@@ -1,0 +1,12 @@
+div{
+    box-sizing: border-box;
+}
+.sectionUsers{
+    width: 70%;
+    box-sizing: border-box;
+    min-height: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}

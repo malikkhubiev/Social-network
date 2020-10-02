@@ -13,6 +13,7 @@ const NavBar = (props) => {
                 <a href=""><li>News</li></a>
                 <a href=""><li>Music</li></a>
                 <a href=""><li>Settings</li></a>
+                <NavLink activeClassName={n.newCl} to="/users"><li>Users</li></NavLink>
             </ul>
             <div className={n.friends}>
                 <p className={n.friendsHeader}>Friends</p>
