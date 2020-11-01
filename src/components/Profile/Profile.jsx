@@ -1,11 +1,14 @@
 import React from 'react';
-import p from './Profile.module.css';
 import Person from './Person/Person';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import Preloader from '../common/Preloader/Preloader';
 const Profile = (props) => {
+    if (!props.profile) {
+        return <Preloader />
+    }
     return (
-        <div className={p.mainContent}>
-            <Person/>
+        <div>
+            <Person profile={props.profile} />
             <MyPostsContainer />
         </div>
     )

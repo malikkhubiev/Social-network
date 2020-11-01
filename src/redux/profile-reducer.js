@@ -2,8 +2,10 @@ import { act } from "react-dom/test-utils";
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
+    profile: null,
     posts: [
         { id: 1, message: "Hi!", likes: 5 },
         { id: 2, message: "Hey, i'm fine, how are you?", likes: 7 },
@@ -34,6 +36,12 @@ const profileReducer = (state = initialState, action) => {
             newState.newPostText = action.newText;
             return newState;
         }
+        case SET_USER_PROFILE: {
+            return({
+                ...state,
+                profile: action.profile,
+            })
+        }
         default:{
             return newState;
         }
@@ -49,6 +57,12 @@ export const updateNewPostTextActionCreator = (text) => {
         type: UPDATE_NEW_POST_TEXT,
         newText: text,
     });
+}
+export const setUserProfile = (profile) => {
+    return({
+        type: SET_USER_PROFILE,
+        profile
+    })
 }
 
 export default profileReducer;

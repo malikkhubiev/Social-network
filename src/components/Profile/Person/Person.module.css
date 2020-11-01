@@ -23,8 +23,10 @@
   border-radius: 50%;
 }
 .personDataDescName{
+  text-transform: capitalize;
   font-size: 30px;
 }
 .personDataDescDesc{
   font-size: 25px;
+  margin: 5px 0;
 }

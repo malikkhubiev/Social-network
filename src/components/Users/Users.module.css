@@ -2,6 +2,7 @@ div{
     box-sizing: border-box;
 }
 .sectionUsers{
+    padding-bottom: 100px;
     width: 70%;
     box-sizing: border-box;
     min-height: 1000px;
@@ -9,4 +10,30 @@ div{
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
+}
+.sectionUsersList{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.sectionUsersListLi{
+    font-size: 20px;
+    cursor: pointer;
+    list-style-type: none;
+    margin: 0 20px;
+}
+.bold{
+    font-size: 20px;
+    cursor: pointer;
+    list-style-type: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+.preloaderImg{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
 }
