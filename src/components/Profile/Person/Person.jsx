@@ -1,5 +1,6 @@
 import React from 'react';
 import person from './Person.module.css';
+import Preloader from './../../common/Preloader/Preloader';
 const Person = (props) => {
     return (
         <div className={person.person}>

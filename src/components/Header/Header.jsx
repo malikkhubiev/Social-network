@@ -1,9 +1,12 @@
 import React from 'react';
 import h from './Header.module.css';
-const Header = () => {
+import logo from './../../images/logo.png';
+import { NavLink } from 'react-router-dom';
+const Header = (props) => {
     return (
         <header className={h.header}>
-            <img src='https://cdn.worldvectorlogo.com/logos/tiktok-logo-2--1.svg' />
+            <img src={logo} />
+            {props.isAuth ? props.login : <NavLink to='/login'><p>Log in</p></NavLink>} 
         </header>
     )
 }
