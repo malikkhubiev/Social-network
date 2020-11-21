@@ -1,11 +1,18 @@
 import { act } from "react-dom/test-utils";
+import { usersAPI } from './../api/api';
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
-    profile: null,
+    profile: {
+        aboutMe: 'Я Front-end разработчик',
+        fullName: "Malik",
+        lookingForAJob: true,
+        photos: {small: null, large: null},
+        userId: 99999
+    },
     posts: [
         { id: 1, message: "Hi!", likes: 5 },
         { id: 2, message: "Hey, i'm fine, how are you?", likes: 7 },
@@ -37,7 +44,8 @@ const profileReducer = (state = initialState, action) => {
             return newState;
         }
         case SET_USER_PROFILE: {
-            return({
+            return(
+                {
                 ...state,
                 profile: action.profile,
             })
@@ -63,6 +71,14 @@ export const setUserProfile = (profile) => {
         type: SET_USER_PROFILE,
         profile
     })
+}
+
+export const getUsers = (userId) => {
+    return (dispatch) => {
+        usersAPI.getUser(userId).then(data => {
+           dispatch(setUserProfile(data));
+        });
+    }
 }
 
 export default profileReducer;

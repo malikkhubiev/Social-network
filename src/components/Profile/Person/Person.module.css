@@ -26,6 +26,11 @@
   text-transform: capitalize;
   font-size: 30px;
 }
+.personStatus input{
+  width: 300px;
+  height: 25px;
+  font-size: 25px;
+}
 .personDataDescDesc{
   font-size: 25px;
   margin: 5px 0;
