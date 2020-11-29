@@ -9,7 +9,7 @@ const Person = (props) => {
                 <img src={props.profile.photos.large} className={person.personDataAva} />
                 <div className={person.personDataDesc}>
                     <p className={person.personDataDescName}>{props.profile.fullName}</p>
-                    <PersonStatus/>
+                    <PersonStatus {...props}/>
                     <p className={person.personDataDescDesc}>Обо мне: {props.profile.aboutMe}</p>
                     {props.profile.lookingForAJob ? <p className={person.personDataDescDesc}>В поиске работы</p> : <p className={person.personDataDescDesc}>У меня отличная работа</p>}
                     <p className={person.personDataDescDesc}>Education: RSEU Rinh</p>

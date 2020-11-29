@@ -1,0 +1,18 @@
+.sectionLogin{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sectionLogin div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 20px;
+}
+.sectionLogin input{
+    font-size: 20px;
+    padding: 5px;
+}

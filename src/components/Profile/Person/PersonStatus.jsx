@@ -5,8 +5,14 @@ class PersonStatus extends React.Component {
         super(props);
         this.state = {
             editMode: false,
-            title: 'Hi'
+            status: this.props.status,
         }
+    }
+    changeStatus (e) {
+        let text = e.target.value;
+        this.setState({
+            status: text,
+        })
     }
     activateEditMode = () => {
         this.setState({
@@ -16,18 +22,19 @@ class PersonStatus extends React.Component {
     deActivateEditMode = () => {
         this.setState({
             editMode: false,
-        })
+        });
+        this.props.setStatus(this.state.status);
     }
     render() {
         return (
             <div className={person.personStatus}>
                 {this.state.editMode === false?
                 <div>
-                    <p onDoubleClick={this.activateEditMode}>{this.state.title}</p>
+                    <p onDoubleClick={this.activateEditMode}>{this.state.status}</p>
                 </div>
                 :
                 <div>
-                    <input autoFocus={true} onBlur={this.deActivateEditMode} value={this.state.title} />
+                    <input onChange={e=>this.changeStatus(e)} autoFocus={true} onBlur={this.deActivateEditMode} value={this.state.status} />
                 </div>}
             </div>
         )
