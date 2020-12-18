@@ -1,40 +1,65 @@
+import { stopSubmit } from 'redux-form';
 import { usersAPI } from './../api/api';
 
 const SET_AUTH_USER_DATA = 'SET-AUTH-USER-DATA';
+const REM_AUTH_USER_DATA = 'REM-AUTH-USER-DATA';
 
 let initialState = {
-    userId: null,
-    email: null, 
+    name: null,
     login: null,
-    isAuth: true,
+    password: null,
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_AUTH_USER_DATA: {
-            return{
+            return {
                 ...state,
                 ...action.data,
                 isAuth: true,
             }
         };
-        default:{
+        case REM_AUTH_USER_DATA: {
+            return {
+                ...state,
+                isAuth: false,
+            }
+        };
+        default: {
             return state;
         }
     }
 }
 
-export const setAuthUserData = (userId, email, login) => ({type: SET_AUTH_USER_DATA, data: {userId, email, login}});
+export const setAuthUserData = (login, password, name) => {
+    return (
+        { type: SET_AUTH_USER_DATA, data: { login, password, name } }
+    )
+};
+export const remAuthUserData = () => {
+    return (
+        { type: REM_AUTH_USER_DATA }
+    )
+};
 
-export const getUsers = () => {
-    return (dispatch) => {
-        usersAPI.getUsers().then(data=>{
-            if(data.resultCode === 0){
-                let {id, email, login} = data.data;
-                dispatch(setAuthUserData(id, email, login));
-            }
-        });
+export const LoginSanka = (formData) => dispatch => {
+    let result;
+    let name;
+    function callBack(prom, userName) {
+        result = prom;
+        name = userName;
     }
+    usersAPI.logIn(formData, callBack);
+    if (result === true) {
+        dispatch(setAuthUserData(formData.login, formData.password, name));
+    } else {
+        dispatch(stopSubmit('login', { _error: result }));
+    }
+}
+
+export const LogoutSanka = () => dispatch => {
+    dispatch(remAuthUserData());
 }
 
 export default authReducer;

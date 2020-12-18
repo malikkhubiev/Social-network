@@ -9,10 +9,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0;
+    margin: 15px 0;
     font-size: 20px;
 }
 .sectionLogin input{
+    width: 300px;
     font-size: 20px;
     padding: 5px;
+}
+.sectionLogin input.rem{
+    width: 50px;
+}
+.summaryError p{
+    color: red;
 }

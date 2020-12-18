@@ -11,4 +11,19 @@
 }
 .header p{
   color: white;
+  font-size: 25px;
+}
+.header div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header>div>button{
+  margin-left: 15px;
+  font-size: 20px;
+  border: 0;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }

@@ -2,23 +2,32 @@ import React from 'react';
 import d from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import DialogMessage from './DialogMessage/DialogMessage';
-import { Redirect } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
+import { Input } from '../common/FormsControlls/FormsControlls';
+import { maxLengthCreator, required } from '../../utils/validators';
+
+const maxLength = maxLengthCreator(25);
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={d.DialogMessagesWriting}>
+            <Field component={Input} validate={[required, maxLength]} name='message' placeholder='Send message' className={d.DialogMessagesWritingInput} />
+            <button className={d.DialogMessagesWritingButton}>Send</button>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm({form: 'AddMessageForm'})(AddMessageForm);
 
 const Dialogs = (props) => {
     let dialogs = props.dialogs;
     let messages = props.messages;
-    let newMessageText = props.newMessageText;
 
     let dialogsElements = dialogs.map( d => <DialogItem path={d.id} name={d.name} /> );
     let messagesElements = messages.map(m => <DialogMessage message={m.message} />);
     
-    let InputMessageRef = React.createRef();
-    let onMessageChange = () => {
-        let text = InputMessageRef.current.value;
-        props.onMessageChange(text);
-    }
-    let onSendMessageClick = () => {
-        props.onSendMessageClick();
+    let addNewMessage = (value) => {
+        props.sendMessage(value.message);
     }
     return (
         <div className={d.Dialogs}>
@@ -29,10 +38,7 @@ const Dialogs = (props) => {
                 <div className={d.DialogMessagesItems}>
                     {messagesElements}
                 </div>
-                <div className={d.DialogMessagesWriting}>
-                    <input value={newMessageText} onChange={onMessageChange} ref={InputMessageRef} placeholder='Send message' className={d.DialogMessagesWritingInput}/>
-                    <button onClick={onSendMessageClick} className={d.DialogMessagesWritingButton}>Send</button>
-                </div>
+                <AddMessageFormRedux onSubmit={addNewMessage} {...props}/>
             </div>
         </div>
     );

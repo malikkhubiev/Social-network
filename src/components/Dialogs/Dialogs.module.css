@@ -6,7 +6,6 @@ a:focus{
     color: black;
 }
 .Dialogs{
-    overflow: hidden;
     width: 75%;
     display: flex;
     justify-content: center;
@@ -26,7 +25,6 @@ a:focus{
 }
 .DialogMessages{
     padding: 50px 10px 10px 10px;
-    height: 100%;
     background-color: lemonchiffon;
     width: 80%;
     display: flex;

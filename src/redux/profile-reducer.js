@@ -1,7 +1,6 @@
 import { act } from "react-dom/test-utils";
 import { usersAPI } from './../api/api';
 
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS'; 
@@ -22,28 +21,16 @@ let initialState = {
         { id: 4, message: ";)", likes: 500 },
         { id: 5, message: "React is so much interesting!", likes: 52 },
     ],
-    newPostText: '',
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let inputText = state.newPostText;
-            let newPosts = [...state.posts];
-            if (inputText) {
-                let newPost = { id: newPosts.length + 1, message: inputText, likes: 1000 };
-                newPosts.push(newPost);
-                return{
-                    ...state,
-                    posts: newPosts,
-                    newPostText: '',
-                }
-            } 
-        }
-        case UPDATE_NEW_POST_TEXT: {
+            let message = action.post;
+            let id = state.posts.length+1;
             return{
                 ...state,
-                newPostText: action.newText,
+                posts: [...state.posts, {id, message, likes: 100}]
             }
         }
         case SET_USER_PROFILE: {
@@ -66,16 +53,11 @@ const profileReducer = (state = initialState, action) => {
         }
     }
 }
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (post) => {
     return ({
         type: ADD_POST,
+        post,
     })
-}
-export const updateNewPostTextActionCreator = (text) => {
-    return ({
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    });
 }
 export const setUserProfile = (profile) => {
     return({

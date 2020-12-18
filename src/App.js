@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 
 const App = (props) => {
   return (

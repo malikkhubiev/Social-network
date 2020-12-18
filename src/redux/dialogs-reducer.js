@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 const SEND_MESSAGE = 'ADD-MESSAGE';
 
 let initialState = {
@@ -15,45 +14,29 @@ let initialState = {
         { id: 3, message: 'Have a good day)' },
         { id: 4, message: '#WhatMeansHashTag?' },
         { id: 5, message: 'New Website!!!' },
-    ],
-    newMessageText: '',
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
-    let newState = {
-        ...state,
-        newMessageText: state.newMessageText,
-        messages: [...state.messages],
-    }
     switch (action.type) {
         case SEND_MESSAGE:{
-            let InputMessageText = newState.newMessageText;
-            if (InputMessageText) {
-                let newMessage = { id: newState.messages.length + 1, message: InputMessageText };
-                newState.messages.push(newMessage);
+            let message = action.newMessage;
+            let id = state.messages.length+1;
+            return{
+                ...state,
+                messages: [...state.messages, {id, message}]
             }
-            newState.newMessageText = '';
-            return newState;
-        }
-        case UPDATE_NEW_MESSAGE: {
-            newState.newMessageText = action.newMessageText;
-            return newState;
         }
         default:{
-            return newState;
+            return state;
         }
     }
 }
-export const sendMessageActionCreator = () => {
+export const sendMessageActionCreator = (newMessage) => {
     return({
         type: SEND_MESSAGE,
-    })
-}
-export const updateNewMessageActionCreator = (text) => {
-    return({
-        type: UPDATE_NEW_MESSAGE,
-        newMessageText: text,
-    })
+        newMessage
+    });
 }
 
 export default dialogsReducer;

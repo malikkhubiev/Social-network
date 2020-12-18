@@ -18,6 +18,9 @@
 .postsMenuHeader{
   font-size: 35px;
 }
+.postsMenu form{
+  width: 100%;
+}
 .postsMenu input{
   margin: 10px 0;
   font-family: Century Gothic;
