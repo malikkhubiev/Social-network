@@ -11,7 +11,7 @@ const PersonStatus = (props) => {
         setEditMode(true);
     }
     let deActivateEditMode = () => {
-        setEditMode(false);
+        setEditMode(false)
         props.setStatus(status);
     }
     return (
