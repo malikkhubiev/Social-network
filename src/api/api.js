@@ -2,18 +2,15 @@ import * as axios from 'axios';
 import authData from './../redux/authDATA';
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
+    async getUsers(currentPage = 1, pageSize = 10) {
+        let response = await axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
             withCredentials: true,
-        }).then(response => {
-            return response.data
         });
+        return response.data;
     },
-    getUser(userId) {
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                return response.data;
-            });
+    async getUser(userId) {
+        let response = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`);
+        return response.data;
     },
     logIn(loginData, callBack) {
         let counter = 0;
@@ -24,7 +21,7 @@ export const usersAPI = {
                 counter++;
             }
         });
-        if(counter === authData.length){
+        if (counter === authData.length) {
             callBack('Wrong Email or Password');
         }
     }

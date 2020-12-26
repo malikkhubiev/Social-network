@@ -13,7 +13,7 @@ const App = (props) => {
     <div className="appWrapper">
       <HeaderContainer/>
       <div className="double">
-        <NavBar friends={props.store.getState().navbarPage.friends} />
+      <NavBar friends={props.store.getState().navbarPage.friends} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
         <Route path='/users' render={() => <UsersContainer />} />

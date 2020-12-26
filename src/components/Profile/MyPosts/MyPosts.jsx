@@ -19,8 +19,8 @@ const AddNewPostForm = (props) => {
 const AddNewPostFormRedux = reduxForm({form: 'AddNewPostForm'})(AddNewPostForm);
 
 const MyPosts = (props) => {
-    let posts = props.posts;
-    let postsElements = posts.map(p => <Post likes={p.likes} message={p.message} />);
+    let posts = [...props.posts];
+    let postsElements = posts.reverse().map(p => <Post likes={p.likes} message={p.message} />);
     let addPost = (value) => {
         props.addPost(value.postText);
     }

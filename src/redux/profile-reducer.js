@@ -65,14 +65,14 @@ export const setUserProfile = (profile) => {
         profile
     })
 }
-export const setStatus = (status) => {return({type: SET_STATUS, status})}
-
-export const getUsers = (userId) => {
-    return (dispatch) => {
-        usersAPI.getUser(userId).then(data => {
-           dispatch(setUserProfile(data));
-        });
-    }
+export const setStatus = (status) => {
+    return({
+        type: SET_STATUS, status
+    })
+}
+export const getUsers = (userId) => async (dispatch) => {
+    let data = await usersAPI.getUser(userId);
+    dispatch(setUserProfile(data));
 }
 
 export default profileReducer;

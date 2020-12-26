@@ -8,7 +8,7 @@ let initialState = {
     name: null,
     login: null,
     password: null,
-    isAuth: true,
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -33,14 +33,15 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (login, password, name) => {
-    return (
-        { type: SET_AUTH_USER_DATA, data: { login, password, name } }
-    )
+    return ({ 
+        type: SET_AUTH_USER_DATA,
+        data: { login, password, name } 
+    })
 };
 export const remAuthUserData = () => {
-    return (
-        { type: REM_AUTH_USER_DATA }
-    )
+    return ({
+        type: REM_AUTH_USER_DATA
+    })
 };
 
 export const LoginSanka = (formData) => dispatch => {
@@ -58,7 +59,7 @@ export const LoginSanka = (formData) => dispatch => {
     }
 }
 
-export const LogoutSanka = () => dispatch => {
+export const LogoutSanka = () => (dispatch) => {
     dispatch(remAuthUserData());
 }
 

@@ -1,4 +1,5 @@
 import { act } from "react-dom/test-utils";
+import { arrayMaker } from "../utils/reducer-helpers";
 import { usersAPI } from './../api/api';
 
 let FOLLOW = 'FOLLOW';
@@ -24,28 +25,6 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users
             };
-        };
-        case FOLLOW: {
-            return {
-                ...state,
-                users: state.users.map(a => {
-                    if (a.id === action.userId) {
-                        return { ...a, followed: true };
-                    }
-                    return a;
-                })
-            }
-        };
-        case UNFOLLOW: {
-            return {
-                ...state,
-                users: state.users.map(a => {
-                    if (a.id === action.userId) {
-                        return { ...a, followed: false };
-                    }
-                    return a;
-                })
-            }
         };
         case SET_TOTAL_USERS_COUNT: {
             return {
@@ -78,15 +57,13 @@ export const setCurrentPage = (pageNumber) => { return { type: SET_CURRENT_PAGE,
 export const setTotalUsersCount = (totalCount) => { return { type: SET_TOTAL_USERS_COUNT, totalCount } };
 export const toggleIsFetching = (isFetching) => { return { type: TOGGLE_IS_FETCHING, isFetching } };
 
-export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount / 150));
-        });
-    }
+export const getUsers = (currentPage, pageSize) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    let data = await usersAPI.getUsers(currentPage, pageSize);
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount / 150));
 }
+
 
 export default usersReducer;
