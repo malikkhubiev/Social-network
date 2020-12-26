@@ -41,6 +41,7 @@ const Login = (props) => {
     return (
         <div className={style.sectionLogin}>
             <p>Login</p>
+            <p>Hint: login and password - admin</p>
             <LoginReduxForm onSubmit={mySubmit} />
         </div>
     )

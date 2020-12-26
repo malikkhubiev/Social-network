@@ -7,7 +7,7 @@ const SET_STATUS = 'SET-STATUS';
 
 let initialState = {
     profile: {
-        status: "I'm fine!",
+        status: "Double click me!",
         aboutMe: 'Я Front-end разработчик',
         fullName: "Malik",
         lookingForAJob: true,

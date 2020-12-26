@@ -1,12 +1,14 @@
 import React from 'react';
 import person from './Person.module.css';
+import ava from './../../../images/brain.jpg';
 import PersonStatus from './PersonStatus';
 const Person = (props) => {
+    let photo = props.profile.photos.large === null?ava:props.profile.photos.large;
     return (
         <div className={person.person}>
-            <img className={person.personTopimg} src="https://мобильныйсервис.рф/wp-content/uploads/2020/04/download-oneplus-5-wallpapers-preview.jpg" />
+            <div className={person.personTopimg}></div>
             <div className={person.personData}>
-                <img src={props.profile.photos.large} className={person.personDataAva} />
+                <img src={photo} className={person.personDataAva} />
                 <div className={person.personDataDesc}>
                     <p className={person.personDataDescName}>{props.profile.fullName}</p>
                     <PersonStatus {...props}/>

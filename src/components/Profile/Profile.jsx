@@ -3,10 +3,10 @@ import Person from './Person/Person';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = (props) => {
     return (
-        <div>
+        <React.Fragment>
             <Person {...props} profile={props.profile} />
             <MyPostsContainer />
-        </div>
+        </React.Fragment>
     )
 }
 export default Profile;

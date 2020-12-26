@@ -16,7 +16,7 @@ let Users = (props) => {
         <div className={styles.sectionUsers}>
             {props.users.map(asd => <UserItem pathCreator={pathCreator} follow={props.follow} unFollow={props.unFollow} key={asd.id} id={asd.id} name={asd.name} status={asd.status} place={asd.place} followed={asd.followed} />)}
             <ul className={styles.sectionUsersList}>
-                {pages.map((n) => {
+                {pages.map((n) => { 
                     return currentPage === n ? <li className={styles.bold}>{n}</li> : <li onClick={() => props.onPageChanged(n)} className={styles.sectionUsersListLi}>{n}</li>
                 })}
             </ul>

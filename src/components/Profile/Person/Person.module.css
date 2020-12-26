@@ -8,6 +8,10 @@
 .personTopimg{
   width: 100%;
   height: 100px;
+  background-image: url('./../../../images/top.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .personData{
   margin-top: 50px;

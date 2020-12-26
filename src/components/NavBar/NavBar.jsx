@@ -10,9 +10,6 @@ const NavBar = (props) => {
             <ul className={n.list}>
                 <NavLink activeClassName={n.newCl} to="/profile"><li>Profile</li></NavLink>
                 <NavLink activeClassName={n.newCl} to="/dialogs"><li>Dialogs</li></NavLink>
-                <a href=""><li>News</li></a>
-                <a href=""><li>Music</li></a>
-                <a href=""><li>Settings</li></a>
                 <NavLink activeClassName={n.newCl} to="/users"><li>Users</li></NavLink>
             </ul>
             <div className={n.friends}>
