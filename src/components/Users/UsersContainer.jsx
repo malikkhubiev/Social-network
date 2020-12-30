@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { follow, unFollow, setCurrentPage, getUsers } from './../../redux/users-reducer';
+import { follow, unFollow, setPage, getUsers } from './../../redux/users-reducer';
 import Users from './Users';
 import Preloader from './../common/Preloader/Preloader';
 
 const UsersComponent = (props) => {
     useEffect(() => {
-        props.getUsers(props.currentPage, props.pageSize);
+        props.getUsers();
     }, []);
 
-    let onPageChanged = (pageNumber) => {
-        props.getUsers(pageNumber, props.pageSize);
+    let setPage = (pageNumber) => {
+        props.setPage(pageNumber);
     }
+
     return (
-        props.isFetching ? <Preloader /> : <Users totalUsersCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} users={props.users} follow={props.follow} unFollow={props.unFollow}
-        />)
+        props.isFetching ? <Preloader /> : <Users totalUsersCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} setPage={setPage} users={props.users} follow={props.follow} unFollow={props.unFollow}/>
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -28,7 +29,7 @@ const mapStateToProps = (state) => {
 }
 
 let UsersContainer = connect(mapStateToProps, {
-    follow, unFollow, setCurrentPage, getUsers
+    follow, unFollow, setPage, getUsers,
 })(UsersComponent);
 
 export default UsersContainer;

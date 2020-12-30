@@ -5,6 +5,15 @@
     align-items: center;
     flex-direction: column;
 }
+.sectionLogin p{
+    font-size: 25px;
+    font-family: Century Gothic;
+}
+.sectionLogin button{
+    width: 100px;
+    height: 35px;
+    font-size: 25px;
+}
 .sectionLogin div{
     display: flex;
     justify-content: center;

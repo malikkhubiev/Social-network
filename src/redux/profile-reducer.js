@@ -7,12 +7,11 @@ const SET_STATUS = 'SET-STATUS';
 
 let initialState = {
     profile: {
-        status: "Double click me!",
+        id: 0,
+        name: "Malik",
         aboutMe: 'Я Front-end разработчик',
-        fullName: "Malik",
+        status: "Double click me!",
         lookingForAJob: true,
-        photos: {small: null, large: null},
-        userId: 99999
     },
     posts: [
         { id: 1, message: "Hi!", likes: 5 },
@@ -70,9 +69,9 @@ export const setStatus = (status) => {
         type: SET_STATUS, status
     })
 }
-export const getUsers = (userId) => async (dispatch) => {
-    let data = await usersAPI.getUser(userId);
-    dispatch(setUserProfile(data));
+export const getUser = (userId) => async (dispatch) => {
+    let user = usersAPI.getUser(userId);
+    dispatch(setUserProfile(user));
 }
 
 export default profileReducer;

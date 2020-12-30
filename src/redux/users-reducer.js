@@ -2,8 +2,6 @@ import { act } from "react-dom/test-utils";
 import { arrayMaker } from "../utils/reducer-helpers";
 import { usersAPI } from './../api/api';
 
-let FOLLOW = 'FOLLOW';
-let UNFOLLOW = 'UNFOLLOW';
 let SET_USERS = 'SET-USERS';
 let SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 let SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
@@ -43,28 +41,38 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching,
             }
-        }
+        };
         default: {
             return state;
         }
     }
 }
 
-export const follow = (userId) => { return { type: FOLLOW, userId } };
-export const unFollow = (userId) => { return { type: UNFOLLOW, userId } };
 export const setUsers = (users) => { return { type: SET_USERS, users } };
 export const setCurrentPage = (pageNumber) => { return { type: SET_CURRENT_PAGE, pageNumber } };
 export const setTotalUsersCount = (totalCount) => { return { type: SET_TOTAL_USERS_COUNT, totalCount } };
 export const toggleIsFetching = (isFetching) => { return { type: TOGGLE_IS_FETCHING, isFetching } };
 
-export const getUsers = (currentPage, pageSize) => async (dispatch) => {
+export const getUsers = () => (dispatch) => {
     dispatch(toggleIsFetching(true));
-    let data = await usersAPI.getUsers(currentPage, pageSize);
+    let users = usersAPI.getUsers();
+    dispatch(setUsers(users));
+    dispatch(setTotalUsersCount(users.length));
     dispatch(toggleIsFetching(false));
-    dispatch(setCurrentPage(currentPage));
-    dispatch(setUsers(data.items));
-    dispatch(setTotalUsersCount(data.totalCount / 150));
 }
 
+export const follow = (id) => (dispatch) => {
+    let users = usersAPI.follow(id);
+    dispatch(setUsers(users));
+}
+
+export const unFollow = (id) => (dispatch) => {
+    let users = usersAPI.unFollow(id);
+    dispatch(setUsers(users));
+}
+
+export const setPage = (pageNumber) => (dispatch) => {
+    dispatch(setCurrentPage(pageNumber));
+}
 
 export default usersReducer;

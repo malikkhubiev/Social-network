@@ -1,16 +1,24 @@
-import * as axios from 'axios';
 import authData from './../redux/authDATA';
+import usersData from './../redux/usersDATA';
 
 export const usersAPI = {
-    async getUsers(currentPage = 1, pageSize = 10) {
-        let response = await axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
-            withCredentials: true,
-        });
-        return response.data;
+    getUsers() {
+        return usersData.slice(0);
     },
-    async getUser(userId) {
-        let response = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`);
-        return response.data;
+    follow(followedUserId){
+        usersData.map(user=>user.id === followedUserId?user.followed = true:0);
+        return usersData.slice(0);
+    },
+    unFollow(followedUserId){
+        usersData.map(user=>user.id === followedUserId?user.followed = false:0);
+        return usersData.slice(0);
+    },
+    getUser(userId) {
+        let profile;
+        usersData.map(user=>{
+            if (user.id === +userId) profile = user;
+        });
+        return profile;
     },
     logIn(loginData, callBack) {
         let counter = 0;
