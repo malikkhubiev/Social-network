@@ -12,8 +12,10 @@ const ProfileContainer = (props) => {
         let userId = props.match.params.userId;
         if (userId !== undefined) {
             props.getUser(userId);
+        }else{
+            props.getUser('mainUser');
         }
-    }, []);
+    }, [props.match.params.userId]);
     return (
         <div className={p.mainContent}>
             <Profile {...props} />

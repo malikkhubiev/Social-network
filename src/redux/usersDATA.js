@@ -1,8 +1,8 @@
 const users = [
     {
         id: 0,
-        name: "Malik",
-        aboutMe: 'Я Front-end разработчик',
+        name: "Alex",
+        aboutMe: 'Давайте жить дружно',
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,

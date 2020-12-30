@@ -70,8 +70,12 @@ export const setStatus = (status) => {
     })
 }
 export const getUser = (userId) => async (dispatch) => {
-    let user = usersAPI.getUser(userId);
-    dispatch(setUserProfile(user));
+    if(userId === 'mainUser'){
+        dispatch(setUserProfile(initialState.profile));
+    }else{
+        let user = usersAPI.getUser(userId);
+        dispatch(setUserProfile(user));    
+    }
 }
 
 export default profileReducer;
