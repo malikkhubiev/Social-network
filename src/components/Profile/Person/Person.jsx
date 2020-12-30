@@ -10,9 +10,9 @@ const Person = (props) => {
                 <div className={person.personDataDesc}>
                     <p className={person.personDataDescName}>{props.profile.name}</p>
                     <PersonStatus {...props}/>
-                    <p className={person.personDataDescDesc}>Обо мне: {props.profile.aboutMe}</p>
-                    {props.profile.lookingForAJob ? <p className={person.personDataDescDesc}>В поиске работы</p> : <p className={person.personDataDescDesc}>У меня отличная работа</p>}
-                    <p className={person.personDataDescDesc}>Education: RSEU Rinh</p>
+                    <p className={person.personDataDescDesc}><b>Обо мне:</b> {props.profile.aboutMe}</p>
+                    <p className={person.personDataDescDesc}><b>Сведения о работе:</b>{props.profile.lookingForAJob ? <p className={person.personDataDescDesc}>В поиске работы</p> : <p className={person.personDataDescDesc}>У меня отличная работа</p>}</p>
+                    <p className={person.personDataDescDesc}><b>Education:</b> RSEU Rinh</p>
                 </div>
             </div>
         </div>
