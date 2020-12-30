@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Login.module.css';
-import {reduxForm, Field, stopSubmit} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import { Input } from '../common/FormsControlls/FormsControlls';
 import { required } from '../../utils/validators';
 import { LoginSanka } from '../../redux/auth-reducer';
