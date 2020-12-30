@@ -8,7 +8,7 @@ let initialState = {
     name: null,
     login: null,
     password: null,
-    isAuth: true,
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
