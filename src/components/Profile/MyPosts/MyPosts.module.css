@@ -13,15 +13,20 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
 .postsMenuHeader{
   font-size: 35px;
 }
 .postsMenu form{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
 }
 .postsMenu input{
+  box-sizing: border-box;
   margin: 10px 0;
   font-family: Century Gothic;
   border: 1px solid black;
@@ -32,8 +37,6 @@
   font-size: 20px;
 }
 .postsMenuSend{
-  transform: translateX(-66%);
-  margin-left: 100%;
   font-family: Century Gothic;
   background-color: #7ad126;
   border: 1px solid black;
@@ -50,6 +53,10 @@
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
+}
+.postsHeader{
+  margin-top: 30px;
+  font-size: 30px;
 }
 .postsPost{
   margin: 25px 0;

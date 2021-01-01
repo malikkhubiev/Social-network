@@ -1,24 +1,38 @@
-import authData from './../redux/authDATA';
-import usersData from './../redux/usersDATA';
+import authData from '../DATA/authDATA';
+import usersData from '../DATA/usersDATA';
+import users, { mainUser } from '../DATA/usersDATA';
 
 export const usersAPI = {
-    getUsers() {
-        return usersData.slice(0);
+    addPost(postMessage) {
+        let message = postMessage;
+        let id = mainUser.posts.length;
+        mainUser.posts = [...mainUser.posts, { id, message, likes: 100 }];
+        return mainUser;
     },
-    follow(followedUserId){
-        usersData.map(user=>user.id === followedUserId?user.followed = true:0);
-        return usersData.slice(0);
-    },
-    unFollow(followedUserId){
-        usersData.map(user=>user.id === followedUserId?user.followed = false:0);
-        return usersData.slice(0);
+    changeStatus(status) {
+        mainUser.status = status;
+        return mainUser;
     },
     getUser(userId) {
         let profile;
-        usersData.map(user=>{
+        usersData.map(user => {
             if (user.id === +userId) profile = user;
         });
         return profile;
+    },
+    getMainUser() {
+        return mainUser;
+    },
+    getUsers() {
+        return usersData;
+    },
+    follow(followedUserId) {
+        usersData.map(user => user.id === followedUserId ? user.followed = true : 0);
+        return usersData;
+    },
+    unFollow(followedUserId) {
+        usersData.map(user => user.id === followedUserId ? user.followed = false : 0);
+        return usersData;
     },
     logIn(loginData, callBack) {
         let counter = 0;

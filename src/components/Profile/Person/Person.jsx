@@ -9,7 +9,7 @@ const Person = (props) => {
                 <div className={person.personDataAva}></div>
                 <div className={person.personDataDesc}>
                     <p className={person.personDataDescName}>{props.profile.name}</p>
-                    <PersonStatus {...props}/>
+                    {props.profile.isMainUser?<PersonStatus {...props}/>:<p className={person.personDataDescDesc}>{props.profile.status}</p>}
                     <p className={person.personDataDescDesc}><b>Обо мне:</b> {props.profile.aboutMe}</p>
                     <p className={person.personDataDescDesc}><b>Сведения о работе:</b>{props.profile.lookingForAJob ? <p className={person.personDataDescDesc}>В поиске работы</p> : <p className={person.personDataDescDesc}>У меня отличная работа</p>}</p>
                     <p className={person.personDataDescDesc}><b>Education:</b> RSEU Rinh</p>

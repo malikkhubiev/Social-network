@@ -6,7 +6,7 @@ export const Input = ({ input, meta, ...props } = props) => {
     return (
         <div className={hasError?styles.error:styles.formDiv}>
             <input {...input} {...props} />
-            {hasError?<span>{meta.error}</span>:''}
+            {hasError?<span>{meta.error}</span>:null}
         </div>
     )
 }

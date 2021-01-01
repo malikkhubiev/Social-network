@@ -1,9 +1,8 @@
 import { act } from "react-dom/test-utils";
 import { usersAPI } from './../api/api';
 
-const ADD_POST = 'ADD-POST';
+const CHANGE_USER_DATA = 'CHANGE_USER_DATA';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS'; 
 
 let initialState = {
     profile: {
@@ -12,39 +11,24 @@ let initialState = {
         aboutMe: 'Я Front-end разработчик',
         status: "Double click me!",
         lookingForAJob: true,
+        isMainUser: true,
+        posts: [],
     },
-    posts: [
-        { id: 1, message: "Hi!", likes: 5 },
-        { id: 2, message: "Hey, i'm fine, how are you?", likes: 7 },
-        { id: 3, message: "I'm fine too, nice to meet you", likes: 2 },
-        { id: 4, message: ";)", likes: 500 },
-        { id: 5, message: "React is so much interesting!", likes: 52 },
-    ],
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST: {
-            let message = action.post;
-            let id = state.posts.length+1;
-            return{
-                ...state,
-                posts: [...state.posts, {id, message, likes: 100}]
-            }
-        }
         case SET_USER_PROFILE: {
             return{
                 ...state,
                 profile: action.profile,
+                posts: action.profile.posts,
             }
         }
-        case SET_STATUS: {
+        case CHANGE_USER_DATA: {
             return{
                 ...state,
-                profile: {
-                    ...state.profile,
-                    status: action.status, 
-                } 
+                profile: action.user
             }
         }
         default:{
@@ -52,26 +36,35 @@ const profileReducer = (state = initialState, action) => {
         }
     }
 }
-export const addPostActionCreator = (post) => {
-    return ({
-        type: ADD_POST,
-        post,
-    })
-}
+
 export const setUserProfile = (profile) => {
-    return({
+    return{
         type: SET_USER_PROFILE,
         profile
-    })
+    }
 }
-export const setStatus = (status) => {
-    return({
-        type: SET_STATUS, status
-    })
+
+export const changeUserData = (user) => {
+    return{
+        type: CHANGE_USER_DATA,
+        user
+    }
 }
-export const getUser = (userId) => async (dispatch) => {
+
+export const changeStatus = (status) => (dispatch) => {
+    let user = usersAPI.changeStatus(status);
+    dispatch(changeUserData(user));   
+}
+
+export const addPost = (post) => (dispatch) => {
+    let user = usersAPI.addPost(post);
+    dispatch(changeUserData(user));
+}
+
+export const getUser = (userId) => (dispatch) => {
     if(userId === 'mainUser'){
-        dispatch(setUserProfile(initialState.profile));
+        let user = usersAPI.getMainUser();
+        dispatch(setUserProfile(user));
     }else{
         let user = usersAPI.getUser(userId);
         dispatch(setUserProfile(user));    

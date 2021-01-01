@@ -30,6 +30,9 @@
   height: 100px;
   border-radius: 50%;
 }
+.personDataDesc{
+  max-width: 70%;
+}
 .personDataDescName{
   text-transform: capitalize;
   font-size: 30px;

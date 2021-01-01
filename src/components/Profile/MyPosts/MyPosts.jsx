@@ -26,12 +26,12 @@ const MyPosts = (props) => {
     }
     return (
         <div className={p.postsArea}>
-            <div className={p.postsMenu}>
+            {props.isMainUser?<div className={p.postsMenu}>
                 <p className={p.postsMenuHeader}>My posts</p>
                 <AddNewPostFormRedux onSubmit={addPost}/>
-            </div>
+            </div>:null}
             <div className={p.posts}>
-                {postsElements}
+                {postsElements.length?postsElements:<p className={p.postsHeader}>This user has not posted anything</p>}
             </div>
         </div>
     )

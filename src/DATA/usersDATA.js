@@ -1,3 +1,12 @@
+export const mainUser = {
+    id: 'mainUser',
+    name: "Malik",
+    aboutMe: 'Я Front-end разработчик',
+    status: "Double click me!",
+    lookingForAJob: true,
+    isMainUser: true,
+    posts: [],
+}
 const users = [
     {
         id: 0,
@@ -6,6 +15,11 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [
+            { id: 0, message: "Hi!", likes: 5 },
+            { id: 1, message: "Life is so beautiful", likes: 12 },
+        ],
+        isMainUser: false,
     },
     {
         id: 1,
@@ -14,6 +28,11 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [
+            { id: 0, message: "DH is one of the best serials", likes: 25 },
+            { id: 1, message: "New song...That's good!", likes: 122 },
+        ],
+        isMainUser: false,
     },
     {
         id: 2,
@@ -22,6 +41,10 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [
+            { id: 0, message: "Have a great day!!!", likes: 15 },
+        ],
+        isMainUser: false,
     },
     {
         id: 3,
@@ -30,6 +53,12 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [
+            { id: 0, message: "American atmosphere", likes: 213 },
+            { id: 1, message: "Don't drink coffee", likes: -5 },
+            { id: 2, message: "Last post wasn't mine", likes: 5 },
+        ],
+        isMainUser: false,
     },
     {
         id: 4,
@@ -38,6 +67,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: false,
         followed: true,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 5,
@@ -46,6 +77,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 6,
@@ -54,6 +87,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: false,
         followed: true,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 7,
@@ -62,6 +97,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: false,
         followed: false,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 8,
@@ -70,6 +107,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: false,
         followed: true,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 9,
@@ -78,6 +117,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: true,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 10,
@@ -86,6 +127,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: true,
+        posts: [],
+        isMainUser: false,
     },
     {
         id: 11,
@@ -94,6 +137,8 @@ const users = [
         status: "Double click me!",
         lookingForAJob: true,
         followed: false,
+        posts: [],
+        isMainUser: false,
     },
 ];
 

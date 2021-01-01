@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import p from './Profile.module.css';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUser, setStatus } from './../../redux/profile-reducer';
+import { getUser, changeStatus } from './../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -28,7 +28,7 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.profile.status,
 });
 export default compose(
-    connect(mapStateToProps, { getUser, setStatus }),
+    connect(mapStateToProps, { getUser, changeStatus }),
     withRouter,
     withAuthRedirect,
 )(ProfileContainer)
