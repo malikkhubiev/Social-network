@@ -6,6 +6,7 @@ export const mainUser = {
     lookingForAJob: true,
     isMainUser: true,
     posts: [],
+    shouldDialogBoxBeOpened: false,
 }
 const users = [
     {
@@ -18,6 +19,10 @@ const users = [
         posts: [
             { id: 0, message: "Hi!", likes: 5 },
             { id: 1, message: "Life is so beautiful", likes: 12 },
+        ],
+        messages: [
+            { id: 0, message: "Hi!"},
+            { id: 1, message: "How are you?"},
         ],
         isMainUser: false,
     },
@@ -32,6 +37,9 @@ const users = [
             { id: 0, message: "DH is one of the best serials", likes: 25 },
             { id: 1, message: "New song...That's good!", likes: 122 },
         ],
+        messages: [
+            { id: 0, message: "Have a great day!"},
+        ],
         isMainUser: false,
     },
     {
@@ -44,6 +52,7 @@ const users = [
         posts: [
             { id: 0, message: "Have a great day!!!", likes: 15 },
         ],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -58,6 +67,7 @@ const users = [
             { id: 1, message: "Don't drink coffee", likes: -5 },
             { id: 2, message: "Last post wasn't mine", likes: 5 },
         ],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -68,6 +78,7 @@ const users = [
         lookingForAJob: false,
         followed: true,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -78,6 +89,7 @@ const users = [
         lookingForAJob: true,
         followed: false,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -88,6 +100,7 @@ const users = [
         lookingForAJob: false,
         followed: true,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -98,6 +111,7 @@ const users = [
         lookingForAJob: false,
         followed: false,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -108,6 +122,7 @@ const users = [
         lookingForAJob: false,
         followed: true,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -118,6 +133,7 @@ const users = [
         lookingForAJob: true,
         followed: true,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -128,6 +144,7 @@ const users = [
         lookingForAJob: true,
         followed: true,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
     {
@@ -138,6 +155,7 @@ const users = [
         lookingForAJob: true,
         followed: false,
         posts: [],
+        messages:[],
         isMainUser: false,
     },
 ];

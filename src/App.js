@@ -18,7 +18,7 @@ const App = (props) => {
         <NavBar friends={props.store.getState().navbarPage.friends} />
         <Route path='/login' render={() => <Login />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-        <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
+        <Route path='/dialogs/:userId?' render={withSuspense(DialogsContainer)} />
         <Route path='/users' render={withSuspense(UsersContainer)}/>
       </div>
     </div>

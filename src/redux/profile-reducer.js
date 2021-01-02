@@ -13,6 +13,8 @@ let initialState = {
         lookingForAJob: true,
         isMainUser: true,
         posts: [],
+        messages: [],
+        shouldDialogBoxBeOpened: false,
     },
 }
 
@@ -35,6 +37,11 @@ const profileReducer = (state = initialState, action) => {
             return state;
         }
     }
+}
+
+export const sendMessage = (id, message) => (dispatch) => {
+    let user = usersAPI.sendMessage(id, message);
+    dispatch(changeUserData(user));   
 }
 
 export const setUserProfile = (profile) => {
@@ -62,7 +69,7 @@ export const addPost = (post) => (dispatch) => {
 }
 
 export const getUser = (userId) => (dispatch) => {
-    if(userId === 'mainUser'){
+    if(userId === 'Default'){
         let user = usersAPI.getMainUser();
         dispatch(setUserProfile(user));
     }else{

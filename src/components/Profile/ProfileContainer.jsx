@@ -13,7 +13,7 @@ const ProfileContainer = (props) => {
         if (userId !== undefined) {
             props.getUser(userId);
         }else{
-            props.getUser('mainUser');
+            props.getUser('Default');
         }
     }, [props.match.params.userId]);
     return (

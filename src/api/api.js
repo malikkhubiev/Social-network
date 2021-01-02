@@ -34,6 +34,16 @@ export const usersAPI = {
         usersData.map(user => user.id === followedUserId ? user.followed = false : 0);
         return usersData;
     },
+    sendMessage(id, sendedMessage) {
+        let searchedUser;
+        usersData.map(user=>{
+            if(user.id === id){
+                user.messages.push({ id: user.messages.length, message: sendedMessage});
+                searchedUser = user;
+            }
+        });
+        return searchedUser;
+    },
     logIn(loginData, callBack) {
         let counter = 0;
         authData.map(obj => {

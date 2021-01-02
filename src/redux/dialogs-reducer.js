@@ -1,21 +1,6 @@
 const SEND_MESSAGE = 'ADD-MESSAGE';
 
-let initialState = {
-    dialogs: [
-        { id: 1, name: 'Artem' },
-        { id: 2, name: 'Zabit' },
-        { id: 3, name: 'Messi' },
-        { id: 4, name: 'Siera' },
-        { id: 5, name: 'Zhois' },
-    ],
-    messages: [
-        { id: 1, message: 'Hi!' },
-        { id: 2, message: 'Good architecture :)' },
-        { id: 3, message: 'Have a good day)' },
-        { id: 4, message: '#WhatMeansHashTag?' },
-        { id: 5, message: 'New Website!!!' },
-    ]
-}
+let initialState = {}
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -31,12 +16,6 @@ const dialogsReducer = (state = initialState, action) => {
             return state;
         }
     }
-}
-export const sendMessage = (newMessage) => {
-    return({
-        type: SEND_MESSAGE,
-        newMessage
-    });
 }
 
 export default dialogsReducer;
