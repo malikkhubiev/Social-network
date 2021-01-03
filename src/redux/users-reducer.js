@@ -1,5 +1,3 @@
-import { act } from "react-dom/test-utils";
-import { arrayMaker } from "../utils/reducer-helpers";
 import { usersAPI } from './../api/api';
 
 let SET_USERS = 'SET-USERS';

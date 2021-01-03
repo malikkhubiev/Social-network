@@ -8,14 +8,15 @@ import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 const ProfileContainer = (props) => {
+    let userId = props.match.params.userId;
+    let getUser = props.getUser;
     useEffect(() => {
-        let userId = props.match.params.userId;
         if (userId !== undefined) {
-            props.getUser(userId);
+            getUser(userId);
         }else{
-            props.getUser('Default');
+            getUser('Default');
         }
-    }, [props.match.params.userId]);
+    }, [userId, getUser]);
     return (
         <div className={p.mainContent}>
             <Profile {...props} />

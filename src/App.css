@@ -1,6 +1,6 @@
 .appWrapper{
   width: 100%;
-  padding: 10px 50px;
+  padding: 10px 25px;
   max-width: 1200px;
   margin: 0 auto;
   font-family: Century Gothic;
@@ -11,4 +11,10 @@
   align-items: flex-start;
   width: 100%;
   margin-top: 50px;
+}
+.rightSide{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }

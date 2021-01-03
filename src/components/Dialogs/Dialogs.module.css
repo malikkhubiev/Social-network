@@ -28,6 +28,7 @@ div{
     height: 580px;
     background-color: lemonchiffon;
     width: 75%;
+    margin-left: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -90,4 +91,22 @@ div{
     border: 1px solid black;
     font-family: Century Gothic;
     font-size: 20px;
+}
+
+@media(max-width: 992px){
+    .DialogMessagesItems{
+        padding: 50px 25px;
+    }
+    .DialogMessagesWriting{
+        padding: 0 25px;
+    }
+    .DialogMessages{
+        margin-left: 10px;
+    }
+    .DialogMessagesItems{
+        padding: 50px 15px;
+    }
+    .DialogMessagesWriting{
+        padding: 0 15px;
+    }
 }

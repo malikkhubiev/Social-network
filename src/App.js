@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import { Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import withSuspense from './hoc/withSuspense';
@@ -16,10 +16,14 @@ const App = (props) => {
       <HeaderContainer />
       <div className="double">
         <NavBar friends={props.store.getState().navbarPage.friends} />
-        <Route path='/login' render={() => <Login />} />
-        <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-        <Route path='/dialogs/:userId?' render={withSuspense(DialogsContainer)} />
-        <Route path='/users' render={withSuspense(UsersContainer)}/>
+        <Switch>
+          <Route exact path='/' render={() => <Redirect to='/profile' />} />
+          <Route path='/login' render={() => <Login />} />
+          <Route path='/profile/:userId?' render={() => <div className='rightSide'><ProfileContainer /></div>} />
+          <Route path='/dialogs/:userId?' render={withSuspense(DialogsContainer)} />
+          <Route path='/users' render={withSuspense(UsersContainer)} />
+          <Route path='*' render={() => <div className='rightSide'>404 Not found</div>} />
+        </Switch>
       </div>
     </div>
   );

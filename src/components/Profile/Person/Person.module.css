@@ -21,10 +21,6 @@
   align-items: center;
 }
 .personDataAva{
-  background-image: url(../../../images/brain.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   margin-right: 50px;
   width: 100px;
   height: 100px;

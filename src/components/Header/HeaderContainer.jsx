@@ -5,9 +5,10 @@ import { getUsers } from '../../redux/users-reducer';
 import Header from './Header';
 
 const HeaderContainer = (props) => {
+    let getUsers = props.getUsers;
     useEffect(() => {
-        props.getUsers();
-    }, []);
+        getUsers();
+    }, [getUsers]);
 
     return (
         <Header {...props} />

@@ -17,23 +17,24 @@ const AddMessageForm = (props) => {
 const AddMessageFormRedux = reduxForm({form: 'AddMessageForm'})(AddMessageForm);
 
 const Dialogs = (props) => {
+    let userId = props.match.params.userId;
+    let getUser = props.getUser;
     useEffect(() => {
-        let userId = props.match.params.userId;
         if (userId !== undefined) {
-            props.getUser(userId);
+            getUser(userId);
         } else {
-            props.getUser('Default');
+            getUser('Default');
         }
-    }, [props.match.params.userId]);
+    }, [userId, getUser]);
 
     let users = props.users;
     let messages = props.messages;
 
-    let dialogsElements = users.map( d => <DialogItem id={d.id} name={d.name} /> );
+    let dialogsElements = users.map( d => <DialogItem key={d.id} id={d.id} name={d.name} /> );
     let messagesElements;
 
     if(messages !== undefined && messages.length){
-        messagesElements = messages.map(m => <DialogMessage message={m.message} />);
+        messagesElements = messages.map(m => <DialogMessage key={m.id} message={m.message} />);
     }else{
         messagesElements = 'This is the beginning of your communication';
     }

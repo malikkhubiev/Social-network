@@ -5,9 +5,10 @@ import Users from './Users';
 import Preloader from './../common/Preloader/Preloader';
 
 const UsersComponent = (props) => {
+    let getUsers = props.getUsers;
     useEffect(() => {
-        props.getUsers();
-    }, []);
+        getUsers();
+    }, [getUsers]);
 
     let setPage = (pageNumber) => {
         props.setPage(pageNumber);

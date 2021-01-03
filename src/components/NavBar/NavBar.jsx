@@ -4,7 +4,7 @@ import FriendsItem from './FriendsItem/FriendsItem';
 import { NavLink } from 'react-router-dom';
 const NavBar = (props) => {
     let friends = props.friends;
-    let friendsElements = friends.map(f=><FriendsItem name={f.name} />);
+    let friendsElements = friends.map(f=><FriendsItem key={f.id} name={f.name} />);
     return (
         <nav className={n.nav}>
             <ul className={n.list}>

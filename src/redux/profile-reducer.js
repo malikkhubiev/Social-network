@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import { usersAPI } from './../api/api';
 
 const CHANGE_USER_DATA = 'CHANGE_USER_DATA';

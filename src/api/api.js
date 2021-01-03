@@ -1,6 +1,6 @@
 import authData from '../DATA/authDATA';
 import usersData from '../DATA/usersDATA';
-import users, { mainUser } from '../DATA/usersDATA';
+import { mainUser } from '../DATA/usersDATA';
 
 export const usersAPI = {
     addPost(postMessage) {
