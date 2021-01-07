@@ -6,6 +6,7 @@ import { required } from '../../utils/validators';
 import { LoginSanka } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { getIsAuth } from '../../redux/auth-selectors';
 
 const LoginForm = (props) => {
     return (
@@ -47,7 +48,7 @@ const Login = (props) => {
     )
 }
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth,
+    isAuth: getIsAuth(state),
 })
 
 const LoginContainer = connect(mapStateToProps, {LoginSanka})(Login);

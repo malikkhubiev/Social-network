@@ -2,6 +2,8 @@ import React from 'react';
 import n from './NavBar.module.css';
 import FriendsItem from './FriendsItem/FriendsItem';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getFriends } from '../../redux/navbar-selectors';
 const NavBar = (props) => {
     let friends = props.friends;
     let friendsElements = friends.map(f=><FriendsItem key={f.id} name={f.name} />);
@@ -21,4 +23,11 @@ const NavBar = (props) => {
         </nav>
     )
 }
-export default NavBar;
+
+const mapStateToProps = (state) => ({
+    friends: getFriends(state),
+})
+
+const NavBarContainer = connect(mapStateToProps, {})(NavBar);
+
+export default NavBarContainer;

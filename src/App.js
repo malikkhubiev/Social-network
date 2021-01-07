@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import withSuspense from './hoc/withSuspense';
+import NavBarContainer from './components/NavBar/NavBar';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -15,7 +15,7 @@ const App = (props) => {
     <div className="appWrapper">
       <HeaderContainer />
       <div className="double">
-        <NavBar friends={props.store.getState().navbarPage.friends} />
+        <NavBarContainer />
         <Switch>
           <Route exact path='/' render={() => <Redirect to='/profile' />} />
           <Route path='/login' render={() => <Login />} />
