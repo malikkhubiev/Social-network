@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { getUserId, getShouldBe, getMessages } from '../../redux/profile-selectors';
-import { getAllUsers } from '../../redux/users-selectors';
+import { getMessages, getShouldBe, getUserId } from '../common/Selectors/profile-selectors';
+import { getAllUsers } from '../common/Selectors/users-selectors';
 import { getUser, sendMessage } from './../../redux/profile-reducer';
 import Dialogs from './Dialogs';
 

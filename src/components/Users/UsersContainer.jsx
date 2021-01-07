@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { follow, unFollow, setPage, getUsers } from './../../redux/users-reducer';
-import { getTotalUsersCount, getAllUsers, getPageSize, getCurrentPage, getIsFetching } from './../../redux/users-selectors';
+import { getTotalUsersCount, getAllUsers, getPageSize, getCurrentPage, getIsFetching, } from '../common/Selectors/users-selectors';
 import Users from './Users';
 import Preloader from './../common/Preloader/Preloader';
 

@@ -6,7 +6,7 @@ import { getUser, changeStatus } from './../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getProfile, getStatus } from '../../redux/profile-selectors';
+import { getProfile, getStatus } from '../common/Selectors/profile-selectors';
 
 const ProfileContainer = (props) => {
     let userId = props.match.params.userId;
