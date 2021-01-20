@@ -1,4 +1,4 @@
-import { usersAPI } from './../api/api';
+import { usersAPI } from '../api/api';
 
 const CHANGE_USER_DATA = 'CHANGE_USER_DATA';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -38,11 +38,6 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessage = (id, message) => (dispatch) => {
-    let user = usersAPI.sendMessage(id, message);
-    dispatch(changeUserData(user));   
-}
-
 export const setUserProfile = (profile) => {
     return{
         type: SET_USER_PROFILE,
@@ -55,6 +50,11 @@ export const changeUserData = (user) => {
         type: CHANGE_USER_DATA,
         user
     }
+}
+
+export const sendMessage = (id, message) => (dispatch) => {
+    let user = usersAPI.sendMessage(id, message);
+    dispatch(changeUserData(user));   
 }
 
 export const changeStatus = (status) => (dispatch) => {
