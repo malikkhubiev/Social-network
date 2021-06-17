@@ -10,9 +10,16 @@
     font-family: Century Gothic;
 }
 .sectionLogin button{
-    width: 100px;
+    min-width: 100px;
     height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-bottom: 1px solid #000;
     font-size: 25px;
+}
+.clickedButton{
+    border-bottom: 1px solid orangered;
 }
 .sectionLogin div{
     display: flex;

@@ -28,12 +28,12 @@ const authReducer = (state = initialState, action) => {
         };
         default: {
             return state;
-        }
+        };
     }
 }
 
 export const setAuthUserData = (login, password, name) => {
-    return ({ 
+    return ({
         type: SET_AUTH_USER_DATA,
         data: { login, password, name } 
     })
@@ -44,18 +44,30 @@ export const remAuthUserData = () => {
     })
 };
 
-export const LoginSanka = (formData) => dispatch => {
-    let result;
-    let name;
-    function callBack(prom, userName) {
-        result = prom;
-        name = userName;
-    }
-    usersAPI.logIn(formData, callBack);
-    if (result === true) {
-        dispatch(setAuthUserData(formData.login, formData.password, name));
-    } else {
-        dispatch(stopSubmit('login', { _error: result }));
+export const LoginSanka = (formData, authMode) => async (dispatch) => {
+    if(authMode === 'login'){
+        let result; let name;
+        function logInCallBack(prom, userName) {
+            result = prom;
+            name = userName;
+        }
+        await usersAPI.logIn(formData, logInCallBack);
+        if (result === true) {
+            dispatch(setAuthUserData(formData.login, formData.password, name));
+        } else {
+            dispatch(stopSubmit('login', { _error: result }));
+        }
+    }else{
+        let result;
+        function registerCallBack(prom){
+            result = prom;
+        }
+        await usersAPI.register(formData, registerCallBack);
+        if(result === true){
+            alert('Вы успешно зарегистрированы')
+        }else{
+            dispatch(stopSubmit('login', { _error: result }))
+        }
     }
 }
 

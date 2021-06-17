@@ -1,6 +1,8 @@
 import authData from '../DATA/authDATA';
 import usersData from '../DATA/usersDATA';
 import { mainUser } from '../DATA/usersDATA';
+import Cookies from 'js-cookie';
+const bcrypt = require('bcryptjs');
 
 export const usersAPI = {
     addPost(postMessage) {
@@ -36,25 +38,48 @@ export const usersAPI = {
     },
     sendMessage(id, sendedMessage) {
         let searchedUser;
-        usersData.map(user=>{
-            if(user.id === id){
-                user.messages.push({ id: user.messages.length, message: sendedMessage});
+        usersData.map(user => {
+            if (user.id === id) {
+                user.messages.push({ id: user.messages.length, message: sendedMessage });
                 searchedUser = user;
             }
         });
         return searchedUser;
     },
-    logIn(loginData, callBack) {
+    async logIn(loginData, logInCallBack) {
         let counter = 0;
         authData.map(obj => {
-            if (obj.login === loginData.login && obj.password === loginData.password) {
-                callBack(true, obj.name);
+            if (obj.login === loginData.login && bcrypt.compareSync(loginData.password, obj.password)) {
+                logInCallBack(true, obj.login);
+                if(loginData.rememberMe === true){
+                    Cookies.set('authorized', true);
+                    Cookies.set('login', obj.login);
+                    Cookies.set('password', obj.password);
+                }
             } else {
                 counter++;
             }
         });
         if (counter === authData.length) {
-            callBack('Wrong Email or Password');
+            logInCallBack('Wrong Email or Password');
+        }
+    },
+    async register(registerData, registerCallBack) {
+        let counter = 0;
+        authData.map(obj => {
+            if (obj.login === registerData.login) {
+                registerCallBack('A user with the same login already exists');
+            } else {
+                counter++;
+            }
+        });
+        if (counter === authData.length) {
+            let hashedPassword = await bcrypt.hash(registerData.password, 1);
+            authData.push({
+                login: registerData.login,
+                password: hashedPassword,
+            });
+            registerCallBack(true);  
         }
     }
 }

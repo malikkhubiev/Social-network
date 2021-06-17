@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Login.module.css';
 import {reduxForm, Field} from 'redux-form';
-import { Input } from '../common/FormsControlls/FormsControlls';
+import { CheckBox, Input } from '../common/FormsControlls/FormsControlls';
 import { required } from '../../utils/validators';
 import { LoginSanka } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getIsAuth } from '../common/Selectors/auth-selectors';
+import Cookies from 'js-cookie';
 
 const LoginForm = (props) => {
     return (
@@ -17,11 +18,14 @@ const LoginForm = (props) => {
             <div>
                 <Field placeholder='Password' name={'password'} validate={[required]} component={Input} />
             </div>
+
+            {props.authMode === 'login'?
             <div>
-                <Field type='checkbox' name={'rememberMe'} className={style.rem} component={'input'} /> remember me
-                </div>
+                <Field placeholder='' name={'rememberMe'} validate={[]} component={CheckBox} />
+            </div>:''}
+            
             <div>
-                <button>Log in</button>
+                <button>Enter</button>
             </div>
             <div className={style.summaryError}>
                 {props.error?<p>{props.error}</p>:''}
@@ -33,17 +37,31 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm); 
 
 const Login = (props) => {
+
+    let [authMode, setAuthMode] = useState('login'); 
+    let changeAuthMode = res => setAuthMode(res);
+
     let mySubmit = (formData) => {
-        props.LoginSanka(formData);
+        props.LoginSanka(formData, authMode);
     }
+
+    // Auto Autent
+    // if(Cookies.get('authorized') === 'true'){
+    //     let login = Cookies.get('login');
+    //     let password = Cookies.get('password');
+    //     let rememberMe = true;
+    //     mySubmit({login, password, rememberMe});
+    // }
+
     if(props.isAuth){
         return <Redirect to='/profile' />
     }
+
     return (
         <div className={style.sectionLogin}>
-            <p>Login</p>
-            <p>Hint: login and password - admin</p>
-            <LoginReduxForm onSubmit={mySubmit} />
+            <p>{authMode}</p>
+            <div><button onClick={()=>changeAuthMode('login')}>Log in</button> / <button onClick={()=>changeAuthMode('register')}>Register now</button></div>
+            <LoginReduxForm authMode={authMode} onSubmit={mySubmit} />
         </div>
     )
 }
